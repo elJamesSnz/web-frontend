@@ -64,7 +64,7 @@ export async function deleteUserByUsername(username) {
   }
 }
 
-export async function updateUserByUsername(username) {
+export async function updateUserByUsername(formData) {
   try {
     const response = await fetch(`${API_URL}/api/users`, {
       method: "PUT",
@@ -77,7 +77,7 @@ export async function updateUserByUsername(username) {
           "Content-Type": "application/json",
         },
       },
-      body: JSON.stringify({ username }),
+      body: formData,
     });
 
     const jsonResponse = await response.json();
