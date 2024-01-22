@@ -8,26 +8,15 @@ import Details from "@/app/Components/Details";
 import styles from "@/app/Components/Details/Details.module.css";
 import { useReload } from "@/app/Context/ReloadContext";
 
-export default function Page({ params }) {
+export default function Page() {
   const { reload, triggerReload } = useReload();
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    if (params.username) {
-      async function fetchUsers() {
-        const response = await getUserByUsername(params.username);
-        setData(response);
-      }
-
-      fetchUsers();
-    }
-  }, [params]);
-
-  useEffect(() => {
     if (reload) {
       async function fetchUsers() {
-        const response = await getUserByUsername(params.username);
-        setData(response);
+        ///const response = await getUserByUsername(params.username);
+        //setData(response);
         triggerReload();
       }
 
@@ -37,13 +26,9 @@ export default function Page({ params }) {
 
   return (
     <MainLayout>
-      {data === null && <p>Cargando datos...</p>}
-      {data && data.length === 0 && <p>No hay datos disponibles.</p>}
-      {data && (
-        <div className={styles.DetailsMain}>
-          <Details key={data.id} data={data} createApi={false} />
-        </div>
-      )}
+      <div className={styles.DetailsMain}>
+        <Details data={data} createApi={true} />
+      </div>
     </MainLayout>
   );
 }

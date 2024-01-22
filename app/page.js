@@ -9,9 +9,12 @@ import Card from "./Components/Card";
 import styles from "./Components/Card/Card.module.css";
 import { getAllUsersApi } from "./Components/api/usersApi";
 
+import { useRouter } from "next/navigation";
+
 export default function Home() {
   const { reload, triggerReload } = useReload();
   const [data, setData] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (reload || !data) {
@@ -26,6 +29,10 @@ export default function Home() {
     }
   }, [reload, triggerReload]);
 
+  const handleClick = () => {
+    router.push("/user/create");
+  };
+
   return (
     <main className="main-page">
       <MainLayout>
@@ -33,12 +40,17 @@ export default function Home() {
           {data === null && <p>Cargando datos...</p>}
           {data && data.length === 0 && <p>No hay datos disponibles.</p>}
           {data && data.length > 0 && (
-            <div className={styles.cardMain}>
-              {data.map((item) => (
-                <Card key={item.id} item={item} />
-              ))}
-            </div>
+            <>
+              <div className={styles.cardMain}>
+                {data.map((item) => (
+                  <Card key={item.id} item={item} />
+                ))}
+              </div>
+            </>
           )}
+          <button className={styles.addBtn} onClick={handleClick}>
+            Crear usuario
+          </button>
         </div>
       </MainLayout>
     </main>

@@ -7,39 +7,55 @@ import DetailsExtendedSkills from "./DetailsExtendedSkills";
 import DetailsPersonal from "./DetailsPersonal";
 import DetailsActions from "./DetailsActions";
 
-import { updateUserByUsername } from "../api/usersApi";
+import { createUserApi, updateUserByUsername } from "../api/usersApi";
 import { useReload } from "@/app/Context/ReloadContext";
+import { useRouter } from "next/navigation";
 
 export default function Details(props) {
-  const { data } = props;
-  const [formData, setFormData] = useState(data);
-  const [image, setImage] = useState(data.image);
-  const [username, setUsername] = useState(data.username);
-  const [name, setName] = useState(data.name);
-  const [surname, setSurname] = useState(data.surname);
-  const [age, setAge] = useState(data.age);
-  const [skills, setSkills] = useState(data.skills);
+  const { data, createApi } = props;
+  const [formData, setFormData] = useState(data || {});
+  const [image, setImage] = useState(data?.image || "");
+  const [username, setUsername] = useState(data?.username || "");
+  const [name, setName] = useState(data?.name || "");
+  const [surname, setSurname] = useState(data?.surname || "");
+  const [age, setAge] = useState(data?.age || 0);
+  const [skills, setSkills] = useState(data?.skills || []);
   const { reload, triggerReload } = useReload();
+  const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (createApi) {
+      if (!username || !name || !surname || age <= 0 || age > 150) {
+        alert(
+          "Error: Algunos campos están vacíos o la edad no es válida (entre 0 y 150)"
+        );
+        return;
+      }
+    }
+
     const updatedFormData = {
       name: name || data.name,
       surname: surname || data.surname,
       age: age || data.age,
-      username: data.username,
+      username: createApi ? username : data.username,
       skills: skills || data.skills,
     };
 
-    if (data.username !== username) {
-      updatedFormData.newUsername = username;
+    if (!createApi)
+      if (data.username !== username) {
+        updatedFormData.newUsername = username;
+      }
+
+    if (createApi) {
+      await createUserApi(updatedFormData);
+    } else {
+      await updateUserByUsername(updatedFormData);
     }
 
-    console.log(updatedFormData);
-
-    const response = await updateUserByUsername(updatedFormData);
-
-    triggerReload();
+    if (createApi) router.push("/");
+    else triggerReload();
   };
 
   return (

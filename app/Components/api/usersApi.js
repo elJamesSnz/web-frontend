@@ -82,6 +82,7 @@ export async function updateUserByUsername(formData) {
 
     const jsonResponse = await response.json();
     if (jsonResponse.status === 200) {
+      alert("Cambio realizado");
     } else {
       console.error("Error al actualizar usuario:", jsonResponse.msg);
     }
@@ -105,6 +106,8 @@ export async function createUserApi(data) {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
+
+    alert("Usuario creado");
 
     return await response.json();
   } catch (error) {
