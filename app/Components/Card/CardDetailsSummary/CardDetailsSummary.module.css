@@ -1,0 +1,28 @@
+.detailsAccount {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.detailsAccount p {
+  margin-top: 5px;
+  color: #d7d1ed;
+}
+
+.detailsAccount p span {
+  color: #a39eb7;
+}
+
+.detailsSkills {
+  font-size: 12px;
+}
+
+.detailsSkills p {
+  color: #d7d1ed;
+  font-style: italic;
+}
+
+.detailsSkills p span {
+  color: #a39eb7;
+}

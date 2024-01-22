@@ -1,0 +1,32 @@
+.actionsButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+  margin: 0 auto;
+}
+
+.firstButton {
+  background-color: #f09666;
+
+  margin-top: 20px;
+  padding: 10px 5px;
+  border-radius: 3px;
+
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.firstButton:hover {
+  border-color: lightgray;
+}
+
+.secondButton {
+  margin-top: auto;
+  transition: background-color 0.3s ease;
+}
+
+.secondButton:hover {
+  color: #ff6a6a;
+}

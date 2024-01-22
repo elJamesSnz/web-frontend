@@ -17,6 +17,7 @@
 }
 
 body {
+  font-size: 14px;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -30,4 +31,8 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.main-page {
+  background-color: #2a2a3b;
 }
