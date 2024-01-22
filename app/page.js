@@ -14,7 +14,7 @@ export default function Home() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    if (reload) {
+    if (reload || !data) {
       async function fetchUsers() {
         const response = await getAllUsersApi();
 

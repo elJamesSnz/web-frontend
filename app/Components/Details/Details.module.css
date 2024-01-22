@@ -1,0 +1,45 @@
+.detailsCardMain {
+  display: flex;
+  flex-direction: column;
+  background-color: #2e2e41;
+  border-radius: 10px;
+  padding: 40px 15px;
+  margin: 15px;
+  justify-content: space-between;
+  gap: 10px;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+
+  width: 600px;
+  height: 700px;
+}
+
+.detailsCardMain:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.detailsCardMain > div {
+  width: calc(33% - 10px);
+}
+
+.detailsInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.detailsExtended {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.detailsExtended > div:first-child {
+  align-self: flex-start;
+  margin: 20px 0;
+}
+
+.detailsExtended > div:last-child {
+  align-self: flex-end;
+}

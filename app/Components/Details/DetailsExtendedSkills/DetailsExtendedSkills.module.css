@@ -1,0 +1,71 @@
+.extendedSkillsMain {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+}
+
+.extendedSkillsMain input {
+  border: none;
+  color: #d7d1ed;
+  background-color: #2a2a3b;
+  padding: 5px;
+  border-radius: 5px;
+
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+
+  margin-top: 10px;
+}
+
+.extendedSkillsContent {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 580px;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+.extendedSkillsAdd {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+.extendedSkillsAdd input {
+  margin-top: 0;
+  max-width: none;
+  margin-top: 20px;
+  width: 200px;
+}
+
+.extendedSkillsAdd label {
+  margin-top: 10px;
+  padding: 12px 10px;
+}
+
+.extendedSkillsAdd label:hover {
+  cursor: pointer;
+}
+
+.extendedSkillsContent::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.extendedSkillsContent::-webkit-scrollbar-track {
+  background: #2a2a3b;
+}
+
+.extendedSkillsContent::-webkit-scrollbar-thumb {
+  background-color: #d7d1ed;
+  border-radius: 5px;
+}
+
+.extendedSkillsContent {
+  scrollbar-width: thin;
+  scrollbar-color: #d7d1ed #2a2a3b;
+}

@@ -14,10 +14,7 @@ export default function CardDetailsSummary(props) {
           <span>Apellido: </span>
           {surname}
         </p>
-        <p>
-          <span>Edad: </span>
-          {age}
-        </p>
+        [...]
       </div>
       <div className={styles.detailsSkills}>
         <p>

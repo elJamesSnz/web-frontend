@@ -1,14 +1,20 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import React from "react";
+import { redirect } from "next/navigation";
 import { useReload } from "@/app/Context/ReloadContext";
 
 import styles from "./CardActions.module.css";
-import { deleteUserByUsername } from "../../api/usersApi";
 
 export default function CardActions(props) {
   const { username } = props;
+  const router = useRouter();
   const { triggerReload } = useReload();
 
-  const handleFirstAction = () => {};
+  const handleFirstAction = () => {
+    router.push(`/user/${username}`);
+  };
 
   const handleSecondAction = async () => {
     if (username) {
@@ -16,7 +22,7 @@ export default function CardActions(props) {
         await deleteUserByUsername(username);
         triggerReload();
       } catch (error) {
-        return null;
+        console.error("Error al eliminar usuario:", error);
       }
     }
   };
@@ -26,7 +32,6 @@ export default function CardActions(props) {
       <button className={styles.firstButton} onClick={handleFirstAction}>
         Detalles
       </button>
-
       <button className={styles.secondButton} onClick={handleSecondAction}>
         Eliminar
       </button>
