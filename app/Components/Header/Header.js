@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <div className={styles.header}>
-      <p onClick={handleClick}>Header</p>
+      <p onClick={handleClick}>Home</p>
     </div>
   );
 }
