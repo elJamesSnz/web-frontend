@@ -2,9 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import React from "react";
-import { redirect } from "next/navigation";
 import { useReload } from "@/app/Context/ReloadContext";
-
+import { deleteUserByUsername } from "../../api/usersApi";
 import styles from "./CardActions.module.css";
 
 export default function CardActions(props) {
