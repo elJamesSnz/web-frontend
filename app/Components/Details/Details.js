@@ -38,7 +38,7 @@ export default function Details(props) {
     const updatedFormData = {
       name: name || data.name,
       surname: surname || data.surname,
-      age: age || data.age,
+      age: parseInt(age) || parseInt(data.age),
       username: createApi ? username : data.username,
       skills: skills || data.skills,
     };
@@ -54,8 +54,7 @@ export default function Details(props) {
       await updateUserByUsername(updatedFormData);
     }
 
-    if (createApi) router.push("/");
-    else triggerReload();
+    router.push("/");
   };
 
   return (

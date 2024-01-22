@@ -77,7 +77,7 @@ export async function updateUserByUsername(formData) {
           "Content-Type": "application/json",
         },
       },
-      body: formData,
+      body: JSON.stringify(formData),
     });
 
     const jsonResponse = await response.json();
