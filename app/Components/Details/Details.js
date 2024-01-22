@@ -27,11 +27,14 @@ export default function Details(props) {
     event.preventDefault();
 
     if (createApi) {
-      if (!username || !name || !surname || age <= 0 || age > 150) {
-        alert(
-          "Error: Algunos campos están vacíos o la edad no es válida (entre 0 y 150)"
-        );
+      if (!username || !name || !surname) {
+        alert("Error: Algunos campos están vacíos");
         return;
+      } else {
+        if (age <= 0 || age > 150) {
+          alert("La edad no es válida (entre 1 y 149)");
+          return;
+        }
       }
     }
 

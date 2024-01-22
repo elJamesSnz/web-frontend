@@ -10,7 +10,7 @@ export default function DetailsPersonal({
   setAge,
 }) {
   const handleInputChange = (setter) => (e) => {
-    const updatedValue = e.target.value.replace(/\s/g, "");
+    const updatedValue = e.target.value;
     setter(updatedValue);
   };
 
